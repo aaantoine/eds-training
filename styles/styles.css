@@ -58,7 +58,9 @@
     --heading-font-size-xs: 22px;
   }
 }
-
+main .light-grey{
+  background-color: lightgray;
+}
 body {
   font-size: var(--body-font-size-m);
   margin: 0;
