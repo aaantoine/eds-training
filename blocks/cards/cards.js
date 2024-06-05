@@ -7,14 +7,13 @@ export default async function decorate(block) {
   } catch (err) {
     console.error('Error fetching placeholders:', err);
   }
-  const { fool } = placeholders;
   /* change to ul, li */
   const ul = document.createElement('ul');
   const newDiv = document.createElement('p');
   newDiv.textContent = placeholders.clickHereForMore;
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
-    while (row.firstElementChild){
+    while (row.firstElementChild) {
       li.append(row.firstElementChild);
     }
     [...li.children].forEach((div) => {
