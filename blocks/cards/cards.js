@@ -1,4 +1,4 @@
-import { createOptimizedPicture, fetchPlaceholders} from '../../scripts/aem.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   let placeholders = {};
@@ -8,12 +8,10 @@ export default async function decorate(block) {
     console.error('Error fetching placeholders:', err);
   }
   const { fool } = placeholders;
-  console.log("La valeur de la clé 'add more' est :", placeholders);
-  console.log("La valeur de la clé 'add more' est :", placeholders.fool);
   /* change to ul, li */
   const ul = document.createElement('ul');
   const newDiv = document.createElement('p');
-  newDiv.textContent =  placeholders.clickHereForMore;
+  newDiv.textContent = placeholders.clickHereForMore;
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     while (row.firstElementChild){
@@ -24,7 +22,6 @@ export default async function decorate(block) {
       else div.className = 'cards-card-body';
     });
     li.append(newDiv);
-    console.log("li :", li);
     ul.append(li);
   });
   ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
